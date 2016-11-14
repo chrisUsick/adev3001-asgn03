@@ -103,6 +103,7 @@ public class Queue<E> {
         } else {
             tail.setNext(toAdd);
         }
+        size++;
         tail = toAdd;
     }
 

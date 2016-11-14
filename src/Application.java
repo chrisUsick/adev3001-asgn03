@@ -30,16 +30,16 @@ public class Application {
         String filename = P4Utils.choose();
 
         if (filename != null) {
-            System.out.println("Filename: "  + filename);
-            MazeData mazeData = new MazeData(filename);
-            DepthFirst depthFirst = new DepthFirst(mazeData.getMaze());
-            Point startingPoint = mazeData.getStartingPoint();
-            Stack<Point> solution = depthFirst.depthFirstSearch(startingPoint.getRow(), startingPoint.getColumn());
-            if (solution.size() > 0) {
-                printSolution(mazeData, solution);
-            } else {
-                System.out.println("There was no solution to the maze");
-            }
+//            System.out.println("Filename: "  + filename);
+//            MazeData mazeData = new MazeData(filename);
+//            DepthFirst depthFirst = new DepthFirst(mazeData.getMaze());
+//            Point startingPoint = mazeData.getStartingPoint();
+//            Stack<Point> solution = depthFirst.depthFirstSearch(startingPoint.getRow(), startingPoint.getColumn());
+//            if (solution.size() > 0) {
+//                printSolution(mazeData, solution);
+//            } else {
+//                System.out.println("There was no solution to the maze");
+//            }
         } else {
             // user clicked cancel or dismissed the dialog
             System.out.println("no Filename");
