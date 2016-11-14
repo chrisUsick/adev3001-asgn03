@@ -1,3 +1,4 @@
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -25,25 +26,54 @@ import static org.junit.Assert.*;
  */
 public class MazeDataTest {
 
+    private MazeData maze01;
+
     /**
-     * test the getMaze method
+     * Initialize the state before the test
+     * @throws Exception
+     */
+    @Before
+    public void setUp() throws Exception {
+        maze01 = new MazeData("test/test01.maze");
+    }
+
+    /**
+     * test the constructor of the MazeData class
      * @throws Exception
      */
     @Test
-    public void getMaze() throws Exception {
+    public void constructor() throws Exception {
         try {
             MazeData badFile = new MazeData("foo");
         } catch (IOException e) {
             assertNotNull("Didn't throw file IO exception", e);
         }
 
-        MazeData file = new MazeData("")
+        try {
+            MazeData badFormat = new MazeData("test/test02.maze");
+        } catch (IllegalArgumentException e) {
+            assertNotNull(e);
+        }
+    }
+
+    /**
+     * test the getMaze method
+     * @throws Exception
+     */
+    @Test
+    public void getMaze() throws Exception {
+        char[][] maze = maze01.getMaze();
+        assertEquals(maze.length, 3);
+        assertEquals(maze[0].length, 3);
+        assertEquals(maze[0][0], 'W');
 
     }
 
     @Test
     public void getStartingPoint() throws Exception {
-
+        Point startingPoint = maze01.getStartingPoint();
+        assertEquals(startingPoint.getRow(), 1);
+        assertEquals(startingPoint.getColumn(), 2);
     }
 
 }

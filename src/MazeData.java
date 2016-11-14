@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * Revision Log
  * Who          When    Reason
  * --------- ---------- ----------------------------------
- *
+ * cusick    14/11/16   made generateArray throw exception
  * </pre>
  *
  * @author Chris Usick
@@ -64,8 +64,8 @@ public class MazeData {
 
             return maze;
         } catch (Exception e) {
-            System.out.println("Error parsing app");
-            return null;
+            System.out.println("Error parsing map");
+            throw new IllegalArgumentException("Error parsing map");
         }
     }
 
