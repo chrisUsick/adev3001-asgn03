@@ -55,15 +55,6 @@ public class BreadthFirst {
         }
 
         
-        return reverseStack(result);
-    }
-
-    private Stack<Point> reverseStack(Stack<Point> stack) {
-        Stack<Point> result = new Stack<>();
-
-        while (!stack.isEmpty()) {
-            result.push(stack.pop());
-        }
         return result;
     }
 

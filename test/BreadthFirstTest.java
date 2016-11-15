@@ -1,6 +1,7 @@
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.*;
@@ -31,8 +32,8 @@ public class BreadthFirstTest {
                 {MapType.End.toChar()}
         };
 
-        BreadthFirst search = new BreadthFirst(maze);
-        Stack<Point> result = search.breadthFirstSearch(0,0);
+        BreadthFirst search = new BreadthFirst(bufferMaze(maze));
+        Stack<Point> result = search.breadthFirstSearch(1,1);
         assertEquals(result.size(), 4);
         int i = 0;
         while (!result.isEmpty()) {
@@ -56,7 +57,28 @@ public class BreadthFirstTest {
 
     @Test
     public void testBreadthFirstShortestRoute() throws Exception {
-        
+        char blank = MapType.Blank.toChar();
+        char wall = MapType.Wall.toChar();
+        char end = MapType.End.toChar();
+        char[][] maze = {
+                {blank, blank, blank},
+                {blank, wall, end},
+                {blank, blank, blank},
+        };
+        BreadthFirst search = new BreadthFirst(bufferMaze(maze));
+        Stack<Point> result = search.breadthFirstSearch(1, 1);
+        assertEquals(result.size(), 4);
+        int i = 0;
+        Point point = null;
+        while (!result.isEmpty()) {
+            point = result.pop();
+            if (i < 3) {
+                i++;
+            }
+            assertEquals(i, point.getColumn());
+        }
+
+        assertEquals("Didn't find the end", 2, point.getRow());
     }
 
     /**
