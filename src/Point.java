@@ -20,6 +20,7 @@
 public class Point {
     private int row;
     private int column;
+    private Point parent;
 
     /**
      * Constructs a new point, setting the row and column
@@ -29,6 +30,17 @@ public class Point {
     public Point(int currentRow, int currentColumn){
         row = currentRow;
         column = currentColumn;
+    }
+
+    /**
+     * Constructs a new point, setting its parent and its row and column
+     * @param row               self row
+     * @param column            self column
+     * @param parent            the parent
+     */
+    public Point(int row, int column, Point parent) {
+        this(row, column);
+        this.parent = parent;
     }
 
     /**
@@ -45,6 +57,22 @@ public class Point {
      */
     public int getColumn() {
         return column;
+    }
+
+    /**
+     * gets the parent point
+     * @return the parent
+     */
+    public Point getParent() {
+        return parent;
+    }
+
+    /**
+     * sets the parent
+     * @param parent the new parent
+     */
+    public void setParent(Point parent) {
+        this.parent = parent;
     }
 
     /**

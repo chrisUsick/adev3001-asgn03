@@ -58,6 +58,12 @@ public class MapTypeTest {
         assertEquals(end, MapType.End);
         assertEquals(visited, MapType.Visited);
         assertEquals(path, MapType.Path);
+
+        try {
+            MapType illegal = MapType.fromChar('T');
+        } catch (IllegalArgumentException e) {
+            assertNotNull(e);
+        }
     }
 
 }
