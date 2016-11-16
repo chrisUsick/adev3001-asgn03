@@ -34,7 +34,7 @@ public class MazeDataTest {
      */
     @Before
     public void setUp() throws Exception {
-        maze01 = new MazeData("test01.maze");
+        maze01 = new MazeData("unittest01.maze");
     }
 
     /**
@@ -50,7 +50,7 @@ public class MazeDataTest {
         }
 
         try {
-            MazeData badFormat = new MazeData("test02.maze");
+            MazeData badFormat = new MazeData("unittest02.maze");
         } catch (IllegalArgumentException e) {
             assertNotNull(e);
         }
@@ -73,7 +73,7 @@ public class MazeDataTest {
     public void getStartingPoint() throws Exception {
         Point startingPoint = maze01.getStartingPoint();
         assertEquals(startingPoint.getRow(), 1);
-        assertEquals(startingPoint.getColumn(), 2);
+        assertEquals(startingPoint.getColumn(), 1);
     }
 
 }

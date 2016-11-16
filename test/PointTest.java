@@ -36,14 +36,15 @@ public class PointTest {
         assertEquals("Failed to set row", point.getRow(), 1);
         assertEquals("Failed to set column", point.getColumn(), 0);
 
-        point = new Point(0,1, new Point(2,3));
+        point = new Point(0,1,2,3);
         assertEquals("Failed to set row", point.getRow(), 0);
         assertEquals("Failed to set column", point.getColumn(), 1);
-        assertEquals("Failed to set parent row", point.getParent().getRow(), 2);
-        assertEquals("Failed to set parent column", point.getParent().getColumn(), 3);
-        point.setParent(new Point(4,5));
-        assertEquals("Failed to set parent row", point.getParent().getRow(), 4);
-        assertEquals("Failed to set parent column", point.getParent().getColumn(), 5);
+        assertEquals("Failed to set parent row", point.getParentRow(), 2);
+        assertEquals("Failed to set parent column", point.getParentColumn(), 3);
+        point.setParentRow(4);
+        point.setParentColumn(5);
+        assertEquals("Failed to set parent row", point.getParentRow(), 4);
+        assertEquals("Failed to set parent column", point.getParentColumn(), 5);
     }
 
     /**

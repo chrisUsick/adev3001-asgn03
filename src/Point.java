@@ -20,11 +20,8 @@
 public class Point {
     private int row;
     private int column;
-
-    // There was an ambiguity between the assignment activity diagrams
-    // and the lecture. The lecture notes suggested to use object references
-    // to the parent therefore I used that technique.
-    private Point parent;
+    private int parentRow;
+    private int parentColumn;
 
     /**
      * Constructs a new point, setting the row and column
@@ -37,14 +34,16 @@ public class Point {
     }
 
     /**
-     * Constructs a new point, setting its parent and its row and column
+     * Constructs a new point, setting its parent and its own row and column
      * @param row               self row
      * @param column            self column
-     * @param parent            the parent
+     * @param parentRow         parent row
+     * @param parentColumn      parent column
      */
-    public Point(int row, int column, Point parent) {
+    public Point(int row, int column, int parentRow, int parentColumn) {
         this(row, column);
-        this.parent = parent;
+        this.parentRow = parentRow;
+        this.parentColumn = parentColumn;
     }
 
     /**
@@ -64,19 +63,35 @@ public class Point {
     }
 
     /**
-     * gets the parent point
-     * @return the parent
+     * get the row of this point's parent
+     * @return  the column
      */
-    public Point getParent() {
-        return parent;
+    public int getParentRow() {
+        return parentRow;
     }
 
     /**
-     * sets the parent
-     * @param parent the new parent
+     * get the column of this point's parent
+     * @return  the column
      */
-    public void setParent(Point parent) {
-        this.parent = parent;
+    public int getParentColumn() {
+        return parentColumn;
+    }
+
+    /**
+     * sets the row of this point's parent
+     * @param parentRow     value to set
+     */
+    public void setParentRow(int parentRow) {
+        this.parentRow = parentRow;
+    }
+
+    /**
+     * sets the column of this point's parent
+     * @param parentColumn value to set
+     */
+    public void setParentColumn(int parentColumn) {
+        this.parentColumn = parentColumn;
     }
 
     /**

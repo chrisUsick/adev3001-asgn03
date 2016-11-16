@@ -22,9 +22,20 @@ import java.util.Map;
  */
 public class BreadthFirst {
     private char[][] maze;
+    private Point[][] mazeSolution;
 
     public BreadthFirst(char[][] maze) {
         this.maze = maze;
+        initializeSolution();
+    }
+
+    private void initializeSolution() {
+        int maxRowLength = 0;
+        for (char[] rows : maze) {
+            maxRowLength = rows.length > maxRowLength ? rows.length : maxRowLength;
+        }
+
+        mazeSolution = new Point[maze.length][maxRowLength];
     }
 
     public Stack<Point> breadthFirstSearch(int row, int column) {
@@ -34,13 +45,16 @@ public class BreadthFirst {
         boolean finished = false;
         while (!pointsQueue.isEmpty()) {
             Point currentPoint = pointsQueue.dequeue();
+            mazeSolution[currentPoint.getRow()][currentPoint.getColumn()] = currentPoint;
             finished = validatePoint(currentPoint);
             if (finished) {
                 endingPoint = currentPoint;
                 break;
             }
             for (Point adjacency: getAdjacencies(currentPoint)) {
-                adjacency.setParent(currentPoint);
+                adjacency.setParentRow(currentPoint.getRow());
+                adjacency.setParentColumn(currentPoint.getColumn());
+                mazeSolution[adjacency.getRow()][adjacency.getColumn()] = adjacency;
                 pointsQueue.enqueue(adjacency);
             }
         }
@@ -50,8 +64,8 @@ public class BreadthFirst {
             Point point = endingPoint;
             do {
                 result.push(point);
-                point = point.getParent();
-            } while (point != null);
+                point = mazeSolution[point.getParentRow()][point.getParentColumn()];
+            } while (point != null && point.getRow() != 0 && point.getColumn() != 0);
         }
 
         
