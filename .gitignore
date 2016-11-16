@@ -9,3 +9,6 @@ Queue_Maze.docx
 coverage
 .DS_Store
 bluej
+~Huge.maze
+~HugeNoExit.maze
+InstructorTest.class

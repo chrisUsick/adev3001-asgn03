@@ -34,7 +34,7 @@ public class MazeDataTest {
      */
     @Before
     public void setUp() throws Exception {
-        maze01 = new MazeData("test/test01.maze");
+        maze01 = new MazeData("test01.maze");
     }
 
     /**
@@ -50,7 +50,7 @@ public class MazeDataTest {
         }
 
         try {
-            MazeData badFormat = new MazeData("test/test02.maze");
+            MazeData badFormat = new MazeData("test02.maze");
         } catch (IllegalArgumentException e) {
             assertNotNull(e);
         }

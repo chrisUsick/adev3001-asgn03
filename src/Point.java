@@ -23,7 +23,7 @@ public class Point {
 
     // There was an ambiguity between the assignment activity diagrams
     // and the lecture. The lecture notes suggested to use object references
-    // to the parent therefore I used that technique. 
+    // to the parent therefore I used that technique.
     private Point parent;
 
     /**
